@@ -75,12 +75,12 @@ void print_square(Square * square)
 //////////////////////////////////////////
 // rectangle
 
-Rectangle *create_rectangle(Point *p1, int length, int width)
+Rectangle *create_rectangle(Point *p1, int width, int height)
 {
     Rectangle *r = (Rectangle *)malloc(sizeof(Rectangle));
     r->p1 = p1;
-    r->p2 = create_point(p1->pos_x + length, p1->pos_y);
-    r->p3 = create_point(p1->pos_x + length, p1->pos_y + width);
+    r->p2 = create_point(p1->pos_x + height, p1->pos_y);
+    r->p3 = create_point(p1->pos_x + height, p1->pos_y + width);
     r->p4 = create_point(p1->pos_x, p1->pos_y + width);
     return r;
 }
@@ -147,7 +147,108 @@ void print_polygon(Polygon * polygon)
 }
 
 
+//////////////////////////////////////////
+// shape
 
+
+Shape *create_empty_shape(SHAPE_TYPE shape_type) 
+{
+    Shape *s = (Shape *)malloc(sizeof(Shape));
+    s->ptrShape = NULL;
+    s->id = 1;
+    s->shape_type = shape_type;
+    return s;
+}
+
+Shape *create_point_shape(int px, int py) 
+{
+    Shape *s = create_empty_shape(POINT);
+    Point *p = create_point(px, py);
+    s->ptrShape = p;
+    return s;
+}
+
+Shape *create_line_shape(int px1, int py1, int px2, int py2) 
+{
+    Shape *s = create_empty_shape(LINE);
+    Point *p1 = create_point(px1, py1);
+    Point *p2 = create_point(px2, py2);
+    Line *l = create_line(p1, p2);
+    s->ptrShape = l;
+    return s;
+}
+
+Shape *create_square_shape(int px, int py, int length) 
+{
+    Shape *s = create_empty_shape(SQUARE);
+    Point *p1 = create_point(px, py);
+    Square *sq = create_square(p1, length);
+    s->ptrShape = sq;
+    return s;
+}
+
+Shape *create_rectangle_shape(int px, int py, int width, int height) 
+{
+    Shape *s = create_empty_shape(RECTANGLE);
+    Point *p1 = create_point(px, py);
+    Rectangle *r = create_rectangle(p1, width, height);
+    s->ptrShape = r;
+    return s;
+}
+
+Shape *create_circle_shape(int px, int py, int radius) 
+{
+    Shape *s = create_empty_shape(CIRCLE);
+    Point *p1 = create_point(px, py);
+    Circle *c = create_circle(p1, radius);
+    s->ptrShape = c;
+    return s;
+}
+
+Shape *create_polygon_shape(int lst[], int n)
+{
+    Shape *s = create_empty_shape(POLYGON);
+    Polygon *p = create_polygon(n);
+    for (int i = 0; i < n; i++)
+    {
+        p->points[i] = create_point(lst[2 * i], lst[2 * i + 1]);
+    }
+    s->ptrShape = p;
+    return s;
+}   
+
+void delete_shape(Shape * shape)
+{
+    free(shape);
+    shape = NULL;
+}
+
+void print_shape(Shape * shape)
+{
+    switch (shape->shape_type)
+    {
+    case POINT:
+        print_point((Point *)shape->ptrShape);
+        break;
+    case LINE:
+        print_line((Line *)shape->ptrShape);
+        break;
+    case SQUARE:
+        print_square((Square *)shape->ptrShape);
+        break;
+    case RECTANGLE:
+        print_rectangle((Rectangle *)shape->ptrShape);
+        break;
+    case CIRCLE:
+        print_circle((Circle *)shape->ptrShape);
+        break;
+    case POLYGON:
+        print_polygon((Polygon *)shape->ptrShape);
+        break;
+    default:
+        break;
+    }
+}
 
 
 
