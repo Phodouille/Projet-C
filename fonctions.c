@@ -22,7 +22,7 @@ void delete_point(Point * point)
 
 void print_point(Point * p)
 {
-    printf("x = %d, y = %d \n", p->pos_x, p->pos_y);
+    printf("POINT %d %d \n", p->pos_x, p->pos_y);
 }
 
 
@@ -45,7 +45,7 @@ void delete_line(Line * line)
 
 void print_line(Line * line)
 {
-    printf("x1 = %d, y1 = %d, x2 = %d, y2 = %d \n", line->p1->pos_x, line->p1->pos_y, line->p2->pos_x, line->p2->pos_y);
+    printf("LINE %d %d %d %d \n", line->p1->pos_x, line->p1->pos_y, line->p2->pos_x, line->p2->pos_y);
 }
 
 //////////////////////////////////////////
@@ -69,7 +69,7 @@ void delete_square(Square * square)
 
 void print_square(Square * square)
 {
-    printf("x1 = %d, y1 = %d, x2 = %d, y2 = %d, x3 = %d, y3 = %d, x4 = %d, y4 = %d \n", square->p1->pos_x, square->p1->pos_y, square->p2->pos_x, square->p2->pos_y, square->p3->pos_x, square->p3->pos_y, square->p4->pos_x, square->p4->pos_y);
+    printf("SQUARE %d %d %d %d %d %d %d %d \n", square->p1->pos_x, square->p1->pos_y, square->p2->pos_x, square->p2->pos_y, square->p3->pos_x, square->p3->pos_y, square->p4->pos_x, square->p4->pos_y);
 }
 
 //////////////////////////////////////////
@@ -93,7 +93,7 @@ void delete_rectangle(Rectangle * rectangle)
 
 void print_rectangle(Rectangle * rectangle)
 {
-    printf("x1 = %d, y1 = %d, x2 = %d, y2 = %d, x3 = %d, y3 = %d, x4 = %d, y4 = %d \n", rectangle->p1->pos_x, rectangle->p1->pos_y, rectangle->p2->pos_x, rectangle->p2->pos_y, rectangle->p3->pos_x, rectangle->p3->pos_y, rectangle->p4->pos_x, rectangle->p4->pos_y);
+    printf("RECTANGLE %d %d %d %d %d %d %d %d \n", rectangle->p1->pos_x, rectangle->p1->pos_y, rectangle->p2->pos_x, rectangle->p2->pos_y, rectangle->p3->pos_x, rectangle->p3->pos_y, rectangle->p4->pos_x, rectangle->p4->pos_y);
 }
 
 
@@ -116,14 +116,14 @@ void delete_circle(Circle * circle)
 
 void print_circle(Circle * circle)
 {
-    printf("x = %d, y = %d, radius = %d \n", circle->p1->pos_x, circle->p1->pos_y, circle->radius);
+    printf("CIRCLE %d %d %d \n", circle->p1->pos_x, circle->p1->pos_y, circle->radius);
 }
 
 
 //////////////////////////////////////////
 // polygon
 
-Polygon *create_polygon(int n)
+Polygon *create_polygon(int n) 
 {
     Polygon *p = (Polygon *)malloc(sizeof(Polygon));
     p->n = n;
@@ -142,7 +142,7 @@ void print_polygon(Polygon * polygon)
     printf("n = %d \n", polygon->n);
     for (int i = 0; i < polygon->n; i++)
     {
-        printf("x = %d, y = %d \n", polygon->points[i]->pos_x, polygon->points[i]->pos_y);
+        printf("POINT %d %d \n", polygon->points[i]->pos_x, polygon->points[i]->pos_y);
     }
 }
 
