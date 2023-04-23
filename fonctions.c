@@ -131,6 +131,8 @@ Polygon *create_polygon(int n)
     return p;
 }
 
+
+
 void delete_polygon(Polygon * polygon)
 {
     free(polygon);
