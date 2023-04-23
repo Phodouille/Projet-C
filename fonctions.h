@@ -43,7 +43,7 @@ typedef enum {
     POINT,
     LINE,
     SQUARE,
-    RECTANGLE,
+    RECTANGLE,  
     CIRCLE,
     POLYGON
 }SHAPE_TYPE;

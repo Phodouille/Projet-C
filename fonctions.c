@@ -167,7 +167,7 @@ Shape *create_point_shape(int px, int py)
     Shape *s = create_empty_shape(POINT);
     Point *p = create_point(px, py);
     s->ptrShape = p;
-    return s;
+    return s;   
 }
 
 Shape *create_line_shape(int px1, int py1, int px2, int py2) 
